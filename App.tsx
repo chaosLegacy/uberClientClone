@@ -40,9 +40,9 @@ function App(): JSX.Element {
           style={{
             backgroundColor: isDarkMode ? Colors.black : Colors.white,
           }}>
-          {/* <HomeScreen /> */}
+          <HomeScreen />
           {/* <DestinationScreen /> */}
-          <OrderScreen />
+          {/* <OrderScreen /> */}
         </View>
       </ScrollView>
     </SafeAreaView>
