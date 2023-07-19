@@ -1,11 +1,8 @@
 import React, { useEffect, useState } from 'react';
 import { View, SafeAreaView } from 'react-native';
 import styles from './styles';
-import {
-  GooglePlacesAutocomplete,
-  GooglePlaceData,
-} from 'react-native-google-places-autocomplete';
-import { GOOGLE_MAPS_API_KEY } from '@env';
+import { GooglePlaceData } from 'react-native-google-places-autocomplete';
+import PlacesAutocomplete from '~/components/molecules/PlacesAutocomplete';
 
 const DestinationScreen = () => {
   const [startPoint, setStartPoint] = useState<GooglePlaceData>();
@@ -21,36 +18,16 @@ const DestinationScreen = () => {
   return (
     <SafeAreaView>
       <View style={styles.container}>
-        <GooglePlacesAutocomplete
-          placeholder="From"
-          onPress={(data, details = null) => {
-            setStartPoint(data);
-            console.log(data, details);
-          }}
-          fetchDetails
-          styles={{
-            textInput: styles.textInput,
-          }}
-          query={{
-            key: GOOGLE_MAPS_API_KEY,
-            language: 'en',
-          }}
+        <PlacesAutocomplete
+          placeholder={'From'}
+          onPress={setStartPoint}
+          textInputStyle={styles.textInput}
         />
 
-        <GooglePlacesAutocomplete
-          placeholder="Where to?"
-          onPress={(data, details = null) => {
-            setEndPoint(data);
-            console.log(data, details);
-          }}
-          fetchDetails
-          styles={{
-            textInput: styles.textInput,
-          }}
-          query={{
-            key: GOOGLE_MAPS_API_KEY,
-            language: 'en',
-          }}
+        <PlacesAutocomplete
+          placeholder={'Where to?'}
+          onPress={setEndPoint}
+          textInputStyle={styles.textInput}
         />
       </View>
     </SafeAreaView>
