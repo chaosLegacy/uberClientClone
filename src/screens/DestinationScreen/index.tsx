@@ -18,17 +18,25 @@ const DestinationScreen = () => {
   return (
     <SafeAreaView>
       <View style={styles.container}>
-        <PlacesAutocomplete
-          placeholder={'From'}
-          onPress={setStartPoint}
-          textInputStyle={styles.textInput}
-        />
+        <View style={styles.relative}>
+          <PlacesAutocomplete
+            placeholder={'From'}
+            onPress={setStartPoint}
+            textInputStyle={styles.textInput}
+          />
+          <View style={styles.circle} />
+        </View>
 
-        <PlacesAutocomplete
-          placeholder={'Where to?'}
-          onPress={setEndPoint}
-          textInputStyle={styles.textInput}
-        />
+        <View style={styles.line} />
+
+        <View style={styles.relative}>
+          <PlacesAutocomplete
+            placeholder={'Where to?'}
+            onPress={setEndPoint}
+            textInputStyle={styles.textInput}
+          />
+          <View style={styles.square} />
+        </View>
       </View>
     </SafeAreaView>
   );

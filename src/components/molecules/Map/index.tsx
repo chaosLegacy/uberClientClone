@@ -24,6 +24,7 @@ const Map = ({
       <MapView
         style={styles.mapView}
         provider={PROVIDER_GOOGLE}
+        showsUserLocation
         initialRegion={initialRegion}>
         <>{children}</>
       </MapView>
