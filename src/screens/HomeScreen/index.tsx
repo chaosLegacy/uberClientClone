@@ -7,7 +7,7 @@ import carsList from 'assets/data/cars';
 import { Car } from '~/types';
 import MapMarker from '~/components/molecules/MapMarker';
 
-const index = () => {
+const HomeScreen = () => {
   const initialRegion = {
     latitude: 28.450627,
     longitude: -16.263045,
@@ -15,7 +15,7 @@ const index = () => {
     longitudeDelta: 0.0112,
   };
   return (
-    <View>
+    <View style={{flex: 1}}>
       <Map initialRegion={initialRegion}>
         {carsList.map((car: Car) => (
           <MapMarker
@@ -35,4 +35,4 @@ const index = () => {
   );
 };
 
-export default index;
+export default HomeScreen;

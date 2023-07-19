@@ -18,11 +18,10 @@ import {
 import Geolocation from '@react-native-community/geolocation';
 
 import { Colors } from 'react-native/Libraries/NewAppScreen';
-import HomeScreen from './src/screens/HomeScreen';
-import DestinationScreen from './src/screens/DestinationScreen';
-import OrderScreen from './src/screens/OrderScreen';
+import Router from '~/navigation/Route';
 
 navigator.geolocation = require('@react-native-community/geolocation');
+import 'react-native-gesture-handler';
 
 function App(): JSX.Element {
   const isDarkMode = useColorScheme() === 'dark';
@@ -64,22 +63,21 @@ function App(): JSX.Element {
   }, []);
 
   return (
-    <SafeAreaView style={backgroundStyle}>
+    <SafeAreaView style={[backgroundStyle, { flex: 1 }]}>
       <StatusBar
         barStyle={isDarkMode ? 'light-content' : 'dark-content'}
         backgroundColor={backgroundStyle.backgroundColor}
       />
       <ScrollView
         contentInsetAdjustmentBehavior="automatic"
-        style={backgroundStyle}>
-        {/*         <Header /> */}
+        style={backgroundStyle}
+        contentContainerStyle={{ flexGrow: 1 }}>
         <View
           style={{
             backgroundColor: isDarkMode ? Colors.black : Colors.white,
+            flex: 1,
           }}>
-          <HomeScreen />
-          {/* <DestinationScreen /> */}
-          {/* <OrderScreen /> */}
+          <Router />
         </View>
       </ScrollView>
     </SafeAreaView>
