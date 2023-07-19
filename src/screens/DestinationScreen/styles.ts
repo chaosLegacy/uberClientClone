@@ -5,15 +5,17 @@ const styles = StyleSheet.create({
     position: 'relative',
   },
   container: {
+    flex: 1,
     padding: 10,
     height: '100%',
     marginLeft: 20,
     position: 'relative',
   },
-  textInput: {
-    backgroundColor: '#eee',
-    marginVertical: 5,
-    padding: 10,
+  inputContainer: {
+    position: 'absolute',
+    left: 10,
+    right: 10,
+    top: 50,
   },
   circle: {
     width: 8,
@@ -22,14 +24,14 @@ const styles = StyleSheet.create({
     borderRadius: 50,
     position: 'absolute',
     top: 23,
-    left: -20,
+    left: -10,
   },
   line: {
-    width: 0,
-    height: '36%', //80%
+    width: 1,
+    height: 36,
     backgroundColor: '#C4C4C4',
     position: 'absolute',
-    top: 45,
+    top: 35,
     bottom: 0,
     left: -6.3,
   },
@@ -38,8 +40,8 @@ const styles = StyleSheet.create({
     height: 8,
     backgroundColor: '#000',
     position: 'absolute',
-    top: 23,
-    left: -20,
+    top: 75,
+    left: -10,
   },
 });
 

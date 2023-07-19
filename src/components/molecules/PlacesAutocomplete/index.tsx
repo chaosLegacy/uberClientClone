@@ -4,13 +4,15 @@ import {
   GooglePlaceData,
 } from 'react-native-google-places-autocomplete';
 import { GOOGLE_MAPS_API_KEY } from '@env';
-import { StyleProp, TextStyle } from 'react-native';
+//import { StyleProp, TextStyle } from 'react-native';
 import PlacesRow from './PlacesRow';
+import GlobalStyles from '~/constants/GlobalStyles';
+import { autocompleteStyle } from './styles';
 
 type PlacesAutocompleteProps = {
   placeholder: string;
   onPress: (data: GooglePlaceData) => void;
-  textInputStyle: StyleProp<TextStyle>;
+  //textInputStyle: StyleProp<TextStyle>;
 };
 
 const homePlace = {
@@ -25,7 +27,6 @@ const workPlace = {
 const PlacesAutocomplete = ({
   placeholder,
   onPress,
-  textInputStyle,
 }: PlacesAutocompleteProps) => {
   return (
     <GooglePlacesAutocomplete
@@ -36,7 +37,8 @@ const PlacesAutocomplete = ({
       }}
       fetchDetails
       styles={{
-        textInput: textInputStyle,
+        textInput: GlobalStyles.textInput,
+        textInputContainer: autocompleteStyle.textInputContainer,
       }}
       query={{
         key: GOOGLE_MAPS_API_KEY,

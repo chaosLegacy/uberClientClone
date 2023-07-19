@@ -1,7 +1,7 @@
 import { Text, View } from 'react-native';
 import React from 'react';
 //import { GooglePlaceData, GooglePlaceDetail } from 'react-native-google-places-autocomplete';
-import styles from './styles';
+import { styles } from './styles';
 import Entypo from 'react-native-vector-icons/Entypo';
 
 type PlaceRowProps = {
@@ -33,9 +33,7 @@ const PlacesRow = ({ data }: PlaceRowProps) => {
   return (
     <View style={styles.row}>
       {displayIconByType(data.description)}
-      <Text style={styles.locationText}>
-        {data.description || data.vicinity}
-      </Text>
+      <Text>{data.description || data.vicinity}</Text>
     </View>
   );
 };

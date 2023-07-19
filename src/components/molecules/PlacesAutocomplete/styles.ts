@@ -1,4 +1,5 @@
 import { StyleSheet } from 'react-native';
+import Colors from '~/constants/Colors';
 
 const styles = StyleSheet.create({
   row: {
@@ -6,12 +7,19 @@ const styles = StyleSheet.create({
     alignItems: 'center',
   },
   iconContainer: {
-    backgroundColor: '#a2a2a2',
+    backgroundColor: Colors.lightGray,
     padding: 5,
     borderRadius: 50,
     marginRight: 10,
   },
-  locationText: {},
 });
 
-export default styles;
+const autocompleteStyle = StyleSheet.create({
+  textInputContainer: {
+    height: 'auto',
+    overflow: 'visible',
+    zIndex: 10,
+  },
+});
+
+export { styles, autocompleteStyle };

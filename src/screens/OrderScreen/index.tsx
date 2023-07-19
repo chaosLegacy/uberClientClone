@@ -1,9 +1,9 @@
-import { View } from 'react-native';
 import React from 'react';
 import Map from '~/components/molecules/Map';
 import DriversList from '~/components/organisms/DriversList';
 import MapDirections from '~/components/molecules/MapDirections';
 import MapMarker from '~/components/molecules/MapMarker';
+import Container from '~/components/atoms/Container';
 
 const OrderScreen = () => {
   const origin = {
@@ -15,14 +15,14 @@ const OrderScreen = () => {
     longitude: -16.269045,
   };
   return (
-    <View>
+    <Container>
       <Map>
         <MapDirections origin={origin} destination={destination} />
         <MapMarker coordinate={origin} title="Origin" />
         <MapMarker coordinate={destination} title="Destination" />
       </Map>
       <DriversList />
-    </View>
+    </Container>
   );
 };
 
