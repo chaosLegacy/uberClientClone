@@ -4,8 +4,12 @@ import DriversList from '~/components/organisms/DriversList';
 import MapDirections from '~/components/molecules/MapDirections';
 import MapMarker from '~/components/molecules/MapMarker';
 import Container from '~/components/atoms/Container';
+import { useRoute } from '@react-navigation/native';
+import { OrderScreenRouteType } from '~/types';
 
 const OrderScreen = () => {
+  const { params } = useRoute<OrderScreenRouteType>();
+  console.log(params);
   const origin = {
     latitude: 28.450627,
     longitude: -16.263045,

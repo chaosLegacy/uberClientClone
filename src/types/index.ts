@@ -1,5 +1,8 @@
+import { RouteProp } from '@react-navigation/native';
+import { StackNavigationProp } from '@react-navigation/stack';
 import type { PropsWithChildren } from 'react';
 import { ImageSourcePropType } from 'react-native';
+import { GooglePlaceData } from 'react-native-google-places-autocomplete';
 
 type SectionProps = PropsWithChildren<{
   title: string;
@@ -22,4 +25,26 @@ interface Car extends CarCommune {
   heading: number;
 }
 
-export type { SectionProps, CarType, Car };
+type RootStackParamList = {
+  Home: undefined;
+  Order: { startPoint: GooglePlaceData; endPoint: GooglePlaceData };
+  Destination: { sort: 'latest' | 'top' } | undefined;
+  Trips: undefined;
+  Help: undefined;
+  Wallet: undefined;
+  Settings: undefined;
+};
+
+type OrderScreenNavigationProp = StackNavigationProp<
+  RootStackParamList,
+  'Order'
+>;
+type OrderScreenRouteType = RouteProp<RootStackParamList, 'Order'>;
+export type {
+  SectionProps,
+  CarType,
+  Car,
+  RootStackParamList,
+  OrderScreenNavigationProp,
+  OrderScreenRouteType,
+};

@@ -1,24 +1,25 @@
 import React from 'react';
 import { NavigationContainer } from '@react-navigation/native';
-import { createStackNavigator } from '@react-navigation/stack';
-import HomeScreen from '~/screens/HomeScreen';
-import DestinationScreen from '~/screens/DestinationScreen';
-import OrderScreen from '~/screens/OrderScreen';
+import { createDrawerNavigator } from '@react-navigation/drawer';
+import { RootStackParamList } from '~/types';
+import StackNavigator from './Stack';
 
-const Stack = createStackNavigator();
+const Drawer = createDrawerNavigator<RootStackParamList>();
 
 const RouteNavigator = () => {
   return (
     <NavigationContainer>
-      <Stack.Navigator
-        initialRouteName="Home"
-        screenOptions={{
-          headerShown: false,
-        }}>
-        <Stack.Screen name="Home" component={HomeScreen} />
-        <Stack.Screen name="Destination" component={DestinationScreen} />
-        <Stack.Screen name="Order" component={OrderScreen} />
-      </Stack.Navigator>
+      <Drawer.Navigator>
+        <Drawer.Screen name="Home" component={StackNavigator} />
+        <Drawer.Screen
+          name="Trips"
+          component={StackNavigator}
+          options={{ drawerLabel: 'Your trips' }}
+        />
+        <Drawer.Screen name="Help" component={StackNavigator} />
+        <Drawer.Screen name="Wallet" component={StackNavigator} />
+        <Drawer.Screen name="Settings" component={StackNavigator} />
+      </Drawer.Navigator>
     </NavigationContainer>
   );
 };
