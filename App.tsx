@@ -23,6 +23,10 @@ import Router from '~/navigation/Route';
 navigator.geolocation = require('@react-native-community/geolocation');
 import 'react-native-gesture-handler';
 
+import { Amplify } from 'aws-amplify';
+import awsExports from '~/aws-exports';
+Amplify.configure(awsExports);
+
 function App(): JSX.Element {
   const isDarkMode = useColorScheme() === 'dark';
 
