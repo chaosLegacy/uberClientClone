@@ -2,7 +2,7 @@ import { RouteProp } from '@react-navigation/native';
 import { StackNavigationProp } from '@react-navigation/stack';
 import type { PropsWithChildren } from 'react';
 import { ImageSourcePropType } from 'react-native';
-import { GooglePlaceData } from 'react-native-google-places-autocomplete';
+import { GooglePlaceDetail } from 'react-native-google-places-autocomplete';
 
 type SectionProps = PropsWithChildren<{
   title: string;
@@ -27,7 +27,7 @@ interface Car extends CarCommune {
 
 type RootStackParamList = {
   Home: undefined;
-  Order: { startPoint: GooglePlaceData; endPoint: GooglePlaceData };
+  Order: { startPoint: GooglePlaceDetail; endPoint: GooglePlaceDetail };
   Destination: { sort: 'latest' | 'top' } | undefined;
   Trips: undefined;
   Help: undefined;

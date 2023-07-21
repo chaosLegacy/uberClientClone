@@ -3,13 +3,14 @@ import { NavigationContainer } from '@react-navigation/native';
 import { createDrawerNavigator } from '@react-navigation/drawer';
 import { RootStackParamList } from '~/types';
 import StackNavigator from './Stack';
+import CustomDrawer from '~/components/molecules/Navigation/Drawer';
 
 const Drawer = createDrawerNavigator<RootStackParamList>();
 
 const RouteNavigator = () => {
   return (
     <NavigationContainer>
-      <Drawer.Navigator>
+      <Drawer.Navigator drawerContent={CustomDrawer}>
         <Drawer.Screen name="Home" component={StackNavigator} />
         <Drawer.Screen
           name="Trips"

@@ -1,7 +1,7 @@
 import React from 'react';
 import {
   GooglePlacesAutocomplete,
-  GooglePlaceData,
+  GooglePlaceDetail,
 } from 'react-native-google-places-autocomplete';
 import { GOOGLE_MAPS_API_KEY } from '@env';
 //import { StyleProp, TextStyle } from 'react-native';
@@ -11,7 +11,7 @@ import { autocompleteStyle } from './styles';
 
 type PlacesAutocompleteProps = {
   placeholder: string;
-  onPress: (data: GooglePlaceData) => void;
+  onPress: (details: GooglePlaceDetail | null) => void;
   //textInputStyle: StyleProp<TextStyle>;
 };
 
@@ -32,10 +32,10 @@ const PlacesAutocomplete = ({
     <GooglePlacesAutocomplete
       placeholder={placeholder}
       onPress={(data, details = null) => {
-        onPress(data);
-        console.log(data, details);
+        onPress(details);
+        console.log('===details: ', details?.formatted_address + '===');
+        console.log('===data: ', data.description + '===');
       }}
-      fetchDetails
       styles={{
         textInput: GlobalStyles.textInput,
         textInputContainer: autocompleteStyle.textInputContainer,
@@ -44,9 +44,10 @@ const PlacesAutocomplete = ({
         key: GOOGLE_MAPS_API_KEY,
         language: 'en',
       }}
+      fetchDetails
       enablePoweredByContainer={false}
       renderRow={data => <PlacesRow data={data} />}
-      renderDescription={(data: any) => data.description || data.vicinity}
+      //renderDescription={data => data.description}
       predefinedPlaces={[homePlace, workPlace]}
       currentLocation
       currentLocationLabel="Current location"

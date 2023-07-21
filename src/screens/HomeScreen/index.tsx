@@ -1,4 +1,3 @@
-import { View } from 'react-native';
 import React from 'react';
 import Map from '~/components/molecules/Map';
 import MessageBox from '~/components/atoms/MessageBox';
@@ -6,17 +5,12 @@ import Search from '~/components/molecules/Search';
 import carsList from 'assets/data/cars';
 import { Car } from '~/types';
 import MapMarker from '~/components/molecules/MapMarker';
+import Container from '~/components/atoms/Container';
 
 const HomeScreen = () => {
-  const initialRegion = {
-    latitude: 28.450627,
-    longitude: -16.263045,
-    latitudeDelta: 0.0221,
-    longitudeDelta: 0.0112,
-  };
   return (
-    <View style={{flex: 1}}>
-      <Map initialRegion={initialRegion}>
+    <Container>
+      <Map>
         {carsList.map((car: Car) => (
           <MapMarker
             key={car.id}
@@ -31,7 +25,7 @@ const HomeScreen = () => {
       </Map>
       <MessageBox />
       <Search />
-    </View>
+    </Container>
   );
 };
 
