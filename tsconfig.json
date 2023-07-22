@@ -8,5 +8,6 @@
       "tailwind": ["./tailwind"],
       "assets/*": ["./assets/*"]
     }
-  }
+  },
+  "exclude": ["**/__mocks__/*"]
 }

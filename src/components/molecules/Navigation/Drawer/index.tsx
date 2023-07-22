@@ -1,6 +1,7 @@
 import React from 'react';
 import { Pressable, Text, View, Image } from 'react-native';
 import Entypo from 'react-native-vector-icons/Entypo';
+import { Auth } from 'aws-amplify';
 
 import {
   DrawerContentComponentProps,
@@ -20,6 +21,10 @@ const CustomDrawer = (props: DrawerContentComponentProps) => {
   const readMessages = () => {
     console.warn('Messages...');
   };
+  const logout = () => {
+    Auth.signOut({ global: true });
+  };
+
   return (
     <DrawerContentScrollView>
       <View style={styles.container}>
@@ -62,6 +67,10 @@ const CustomDrawer = (props: DrawerContentComponentProps) => {
         {/* Make money */}
         <Pressable onPress={makeMoney}>
           <Text style={styles.link}>Make money driving</Text>
+        </Pressable>
+        {/* Logout */}
+        <Pressable onPress={logout}>
+          <Text style={styles.link}>Log out</Text>
         </Pressable>
       </View>
       <DrawerItemList {...props} />

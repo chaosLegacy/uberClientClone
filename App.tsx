@@ -23,13 +23,18 @@ import Router from '~/navigation/Route';
 navigator.geolocation = require('@react-native-community/geolocation');
 import 'react-native-gesture-handler';
 
+import { withAuthenticator } from 'aws-amplify-react-native';
 import { Amplify } from 'aws-amplify';
 import awsExports from '~/aws-exports';
-Amplify.configure(awsExports);
+Amplify.configure({
+  ...awsExports,
+  Analytics: {
+    disabled: true,
+  },
+});
 
 function App(): JSX.Element {
   const isDarkMode = useColorScheme() === 'dark';
-
   const backgroundStyle = {
     backgroundColor: isDarkMode ? Colors.darker : Colors.lighter,
   };
@@ -88,4 +93,4 @@ function App(): JSX.Element {
   );
 }
 
-export default App;
+export default withAuthenticator(App);
