@@ -1,7 +1,9 @@
 import { StyleSheet } from 'react-native';
+import Colors from '~/constants/Colors';
 
 const styles = StyleSheet.create({
   container: {
+    flex: 1,
     flexDirection: 'row',
     justifyContent: 'space-between',
     alignItems: 'center',
@@ -22,7 +24,7 @@ const styles = StyleSheet.create({
     marginBottom: 5,
   },
   time: {
-    color: '#5d5d5d',
+    color: Colors.darkGray,
   },
   rightContainer: {
     width: 100,

@@ -1,15 +1,15 @@
 import { StyleSheet } from 'react-native';
+import Colors from '~/constants/Colors';
 
 const styles = StyleSheet.create({
   confirmButton: {
     width: '100%',
-    backgroundColor: '#000',
-    padding: 10,
-    margin: 10,
+    backgroundColor: Colors.black,
+    padding: 15,
     alignItems: 'center',
   },
   confirmText: {
-    color: '#fff',
+    color: Colors.white,
     fontWeight: 'bold',
   },
 });

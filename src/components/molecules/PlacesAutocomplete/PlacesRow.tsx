@@ -1,8 +1,8 @@
 import { Text, View } from 'react-native';
 import React from 'react';
-//import { GooglePlaceData, GooglePlaceDetail } from 'react-native-google-places-autocomplete';
 import { styles } from './styles';
 import Entypo from 'react-native-vector-icons/Entypo';
+import Colors from '~/constants/Colors';
 
 type PlaceRowProps = {
   data: any;
@@ -12,20 +12,22 @@ const PlacesRow = ({ data }: PlaceRowProps) => {
     switch (type) {
       case 'Home':
         return (
-          <View style={[styles.iconContainer, { backgroundColor: '#2b80ff' }]}>
-            <Entypo name="home" size={20} color="#fff" />
+          <View
+            style={[styles.iconContainer, { backgroundColor: Colors.blue }]}>
+            <Entypo name="home" size={20} color={Colors.white} />
           </View>
         );
       case 'Work':
         return (
-          <View style={[styles.iconContainer, { backgroundColor: '#2b80ff' }]}>
-            <Entypo name="briefcase" size={20} color="#fff" />
+          <View
+            style={[styles.iconContainer, { backgroundColor: Colors.blue }]}>
+            <Entypo name="briefcase" size={20} color={Colors.white} />
           </View>
         );
       default:
         return (
           <View style={styles.iconContainer}>
-            <Entypo name="location-pin" size={20} color="#fff" />
+            <Entypo name="location-pin" size={20} color={Colors.white} />
           </View>
         );
     }

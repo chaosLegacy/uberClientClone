@@ -4,11 +4,16 @@ import DriversList from '~/components/organisms/DriversList';
 import MapDirections from '~/components/molecules/MapDirections';
 import MapMarker from '~/components/molecules/MapMarker';
 import Container from '~/components/atoms/Container';
-import { useRoute } from '@react-navigation/native';
-import { OrderScreenRouteType } from '~/types';
+import { useRoute, useNavigation } from '@react-navigation/native';
+import { HomeScreenNavigationProp, OrderScreenRouteType } from '~/types';
+import { API, graphqlOperation, Auth } from 'aws-amplify';
+import { createOrder } from '~/graphql/mutations';
+import { CreateOrderInput } from '~/API';
+import { Alert } from 'react-native';
 
 const OrderScreen = () => {
   const { params } = useRoute<OrderScreenRouteType>();
+  const navigation = useNavigation<HomeScreenNavigationProp>();
   const { startPoint, endPoint } = params;
   const wayPoint = {
     origin: {
@@ -36,6 +41,38 @@ const OrderScreen = () => {
     ...calculateDelta(),
   };
 
+  const onConfirm = async (carType?: string) => {
+    try {
+      if (!carType) {
+        return;
+      }
+      const currentUser = await Auth.currentAuthenticatedUser();
+      const input: CreateOrderInput = {
+        userId: currentUser.attributes.sub,
+        type: carType,
+        originLat: origin.latitude,
+        originLong: origin.longitude,
+        destLat: destination.latitude,
+        destLong: destination.longitude,
+      };
+      await API.graphql(
+        graphqlOperation(createOrder, {
+          input,
+        }),
+      );
+      Alert.alert('Huraaay', 'Your order has been created', [
+        {
+          text: 'Go Home',
+          onPress: () => {
+            navigation.navigate('Home');
+          },
+        },
+      ]);
+    } catch (err) {
+      console.log('Error: ', err);
+    }
+  };
+
   return (
     <Container>
       <Map coordinate={region}>
@@ -43,7 +80,7 @@ const OrderScreen = () => {
         <MapMarker coordinate={origin} title="Origin" />
         <MapMarker coordinate={destination} title="Destination" />
       </Map>
-      <DriversList />
+      <DriversList onSubmitCarType={onConfirm} />
     </Container>
   );
 };

@@ -1,8 +1,9 @@
 import { StyleSheet } from 'react-native';
+import Colors from '~/constants/Colors';
 
 const styles = StyleSheet.create({
   inputBox: {
-    backgroundColor: '#e7e7e7',
+    backgroundColor: Colors.gray,
     margin: 10,
     padding: 10,
     flexDirection: 'row',
@@ -12,14 +13,14 @@ const styles = StyleSheet.create({
   inputText: {
     fontSize: 20,
     fontWeight: '600',
-    color: '#434343',
+    color: Colors.darkGray,
   },
   timeContainer: {
     flexDirection: 'row',
     width: 100,
     justifyContent: 'space-between',
     padding: 10,
-    backgroundColor: '#fff',
+    backgroundColor: Colors.white,
     borderRadius: 50,
   },
   row: {
@@ -27,10 +28,10 @@ const styles = StyleSheet.create({
     padding: 20,
     alignItems: 'center',
     borderBottomWidth: 1,
-    borderColor: '#dbdbdb',
+    borderColor: Colors.gray,
   },
   iconContainer: {
-    backgroundColor: '#b3b3b3',
+    backgroundColor: Colors.darkGray,
     padding: 10,
     borderRadius: 25,
   },

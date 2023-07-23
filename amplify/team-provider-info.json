@@ -19,7 +19,7 @@
       "function": {
         "uberclientAuthPostConfirmation": {
           "deploymentBucketName": "amplify-uberclient-dev-134154-deployment",
-          "s3Key": "amplify-builds/uberclientAuthPostConfirmation-496f4243454d634c5362-build.zip"
+          "s3Key": "amplify-builds/uberclientAuthPostConfirmation-396e4157537249577a46-build.zip"
         }
       },
       "api": {

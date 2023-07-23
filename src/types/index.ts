@@ -1,7 +1,6 @@
 import { RouteProp } from '@react-navigation/native';
 import { StackNavigationProp } from '@react-navigation/stack';
 import type { PropsWithChildren } from 'react';
-import { ImageSourcePropType } from 'react-native';
 import { GooglePlaceDetail } from 'react-native-google-places-autocomplete';
 
 type SectionProps = PropsWithChildren<{
@@ -11,7 +10,7 @@ type SectionProps = PropsWithChildren<{
 type CarCommune = {
   id: string;
   type: string;
-  uri: ImageSourcePropType;
+  uri: string;
 };
 
 interface CarType extends CarCommune {
@@ -34,6 +33,7 @@ type RootStackParamList = {
   Wallet: undefined;
   Settings: undefined;
 };
+type HomeScreenNavigationProp = StackNavigationProp<RootStackParamList, 'Home'>;
 
 type OrderScreenNavigationProp = StackNavigationProp<
   RootStackParamList,
@@ -45,6 +45,7 @@ export type {
   CarType,
   Car,
   RootStackParamList,
+  HomeScreenNavigationProp,
   OrderScreenNavigationProp,
   OrderScreenRouteType,
 };

@@ -1,4 +1,5 @@
 import { StyleSheet } from 'react-native';
+import Colors from '~/constants/Colors';
 
 const styles = StyleSheet.create({
   relative: {
@@ -20,7 +21,7 @@ const styles = StyleSheet.create({
   circle: {
     width: 8,
     height: 8,
-    backgroundColor: '#000',
+    backgroundColor: Colors.black,
     borderRadius: 50,
     position: 'absolute',
     top: 23,
@@ -29,7 +30,7 @@ const styles = StyleSheet.create({
   line: {
     width: 1,
     height: 36,
-    backgroundColor: '#C4C4C4',
+    backgroundColor: Colors.lightGray,
     position: 'absolute',
     top: 35,
     bottom: 0,
@@ -38,7 +39,7 @@ const styles = StyleSheet.create({
   square: {
     width: 8,
     height: 8,
-    backgroundColor: '#000',
+    backgroundColor: Colors.black,
     position: 'absolute',
     top: 75,
     left: -10,

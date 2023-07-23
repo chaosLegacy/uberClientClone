@@ -1,27 +1,30 @@
 import React from 'react';
 import styles from './styles';
 import { Marker, LatLng } from 'react-native-maps';
-import { Image, ImageSourcePropType } from 'react-native';
+import { Image } from 'react-native';
+import { getImageByCarType } from '~/utils';
 
 type MapMarkerProps = {
   coordinate: LatLng;
-  heading?: number;
   title?: string;
-  uri?: ImageSourcePropType;
+  car?: {
+    heading: number;
+    type: string;
+  };
 };
-const MapMarker = ({ coordinate, title, uri, heading }: MapMarkerProps) => {
+const MapMarker = ({ coordinate, title, car }: MapMarkerProps) => {
   return (
     <Marker coordinate={coordinate} title={title}>
-      {uri && (
+      {car && (
         <Image
-          source={uri}
+          source={getImageByCarType(car.type, true)}
           style={[
             styles.marker,
-            heading
+            car.heading
               ? {
                   transform: [
                     {
-                      rotate: `${heading}deg`,
+                      rotate: `${car.heading}deg`,
                     },
                   ],
                 }

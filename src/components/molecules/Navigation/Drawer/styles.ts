@@ -37,7 +37,7 @@ const styles = StyleSheet.create({
     width: 10,
     height: 10,
     borderRadius: 50,
-    backgroundColor: Colors.lightBlue,
+    backgroundColor: Colors.turquoise,
     marginLeft: 10,
   },
   profileContainer: {

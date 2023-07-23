@@ -1,26 +1,27 @@
 import { StyleSheet } from 'react-native';
+import Colors from './Colors';
 
 export default StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: '#fff',
+    backgroundColor: Colors.white,
   },
   relative: {
     position: 'relative',
   },
+  disabledButton: {
+    backgroundColor: Colors.gray,
+  },
+  disabledText: {
+    color: Colors.gray,
+  },
   textInput: {
-    backgroundColor: '#eee',
+    backgroundColor: Colors.lightGray,
     marginVertical: 5,
     padding: 10,
     fontSize: 15,
     lineHeight: 15.5,
     paddingBottom: 0,
     flex: 1,
-  },
-  blueText: {
-    color: 'blue',
-  },
-  redText: {
-    color: 'red',
   },
 });
