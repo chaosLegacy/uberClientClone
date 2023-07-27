@@ -5,6 +5,7 @@ import DestinationScreen from '~/screens/DestinationScreen';
 import OrderScreen from '~/screens/OrderScreen';
 import OrderDetailScreen from '~/screens/OrderDetailScreen';
 import { RootStackParamList } from '~/types';
+import WaitingDriverScreen from '~/screens/WaitingDriverScreen';
 
 const Stack = createStackNavigator<RootStackParamList>();
 
@@ -18,6 +19,7 @@ const StackNavigator = () => {
       <Stack.Screen name="Home" component={HomeScreen} />
       <Stack.Screen name="Destination" component={DestinationScreen} />
       <Stack.Screen name="Order" component={OrderScreen} />
+      <Stack.Screen name="WaitingDriver" component={WaitingDriverScreen} />
       <Stack.Screen name="OrderDetail" component={OrderDetailScreen} />
     </Stack.Navigator>
   );

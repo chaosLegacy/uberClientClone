@@ -18,6 +18,16 @@ const getImageByCarType = (type: string, isMap?: boolean) => {
   }
 };
 
+// Function to calculate the delta between the two points
+const calculateDelta = (origin: LatLng, destination: LatLng) => {
+  const latitudeDelta = Math.abs(origin.latitude - destination.latitude);
+  const longitudeDelta = Math.abs(origin.longitude - destination.longitude);
+  return {
+    latitudeDelta: Math.max(0.018, latitudeDelta), // A minimum value to avoid an extremely zoomed-in map
+    longitudeDelta: Math.max(0.018, longitudeDelta), // A minimum value to avoid an extremely zoomed-in map
+  };
+};
+
 // Function to calculate the distance between two points
 const calculateDistance = (point1: LatLng, point2: LatLng) => {
   const latDiff = point2.latitude - point1.latitude;
@@ -66,6 +76,7 @@ const { width, height } = Dimensions.get('window');
 
 export {
   getImageByCarType,
+  calculateDelta,
   calculateDistance,
   moveBetweenTwoPoints,
   width,

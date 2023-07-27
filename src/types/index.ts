@@ -55,22 +55,29 @@ type RootStackParamList = {
   Home: undefined;
   Destination: { sort: 'latest' | 'top' } | undefined;
   Order: { startPoint: GooglePlaceDetail; endPoint: GooglePlaceDetail };
-  OrderDetail: { id: string };
+  WaitingDriver: { orderId: string };
+  OrderDetail: { orderId: string; carId: string };
   Trips: undefined;
   Help: undefined;
   Wallet: undefined;
   Settings: undefined;
 };
 type HomeScreenNavigationProp = StackNavigationProp<RootStackParamList, 'Home'>;
-type OrderDetailScreenNavigationProp = StackNavigationProp<
-  RootStackParamList,
-  'OrderDetail'
->;
 type OrderScreenNavigationProp = StackNavigationProp<
   RootStackParamList,
   'Order'
 >;
+type WaitingDriverScreenNavigationProp = StackNavigationProp<
+  RootStackParamList,
+  'WaitingDriver'
+>;
+type OrderDetailScreenNavigationProp = StackNavigationProp<
+  RootStackParamList,
+  'OrderDetail'
+>;
 type OrderScreenRouteType = RouteProp<RootStackParamList, 'Order'>;
+type WaitingDriverScreenType = RouteProp<RootStackParamList, 'WaitingDriver'>;
+type OrderDetailScreenType = RouteProp<RootStackParamList, 'OrderDetail'>;
 export type {
   SectionProps,
   CarType,
@@ -80,6 +87,9 @@ export type {
   RootStackParamList,
   HomeScreenNavigationProp,
   OrderScreenNavigationProp,
+  WaitingDriverScreenNavigationProp,
   OrderDetailScreenNavigationProp,
   OrderScreenRouteType,
+  OrderDetailScreenType,
+  WaitingDriverScreenType,
 };

@@ -44,5 +44,5 @@ type Order @model @auth(rules: [{ allow: private }]) {
 
 type Subscription {
   onOrderUpdated(id: ID!): Order @aws_subscribe(mutations: ["updateOrder"])
-  onCarUpdated(id: ID!): Order @aws_subscribe(mutations: ["updateCar"])
+  onCarUpdated(id: ID!): Car @aws_subscribe(mutations: ["updateCar"])
 }

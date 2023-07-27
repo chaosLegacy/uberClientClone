@@ -32,6 +32,17 @@ const _createDriverCar = async (currentUser: CognitoUserExt) => {
   }
 };
 
+const _getDriverCarById = async (carId: string): Promise<Car | undefined> => {
+  try {
+    const response = (await API.graphql(
+      graphqlOperation(getCar, { id: carId }),
+    )) as GraphQLResult<{ getCar: Car }>;
+    return response.data?.getCar;
+  } catch (err) {
+    console.log('Error Services -> getCarById: ', err);
+  }
+};
+
 const _getDriverCarByUserId = async (
   currentUser: CognitoUserExt,
 ): Promise<Car | undefined> => {
@@ -54,7 +65,7 @@ const _updateDriverCar = async (currentCar: UpdateCarInput): Promise<void> => {
   /**
      * You do not have to pass in createdAt and updatedAt fields,
      * AppSync manages this for you.
-    If you pass in extra input fields not expected by the AppSync schema, this query will fail. 
+    If you pass in extra input fields not expected by the AppSync schema, this query will fail.
     You can see this in the error field returned by the query
     (the query itself does not throw, per GraphQL design).
     */
@@ -67,6 +78,7 @@ const _updateDriverCar = async (currentCar: UpdateCarInput): Promise<void> => {
 
 export {
   _getCarsList,
+  _getDriverCarById,
   _createDriverCar,
   _getDriverCarByUserId,
   _updateDriverCar,

@@ -10,7 +10,11 @@ const Drawer = createDrawerNavigator<RootStackParamList>();
 const RouteNavigator = () => {
   return (
     <NavigationContainer>
-      <Drawer.Navigator drawerContent={CustomDrawer}>
+      <Drawer.Navigator
+        drawerContent={CustomDrawer}
+        screenOptions={{
+          headerShown: false,
+        }}>
         <Drawer.Screen name="Home" component={StackNavigator} />
         <Drawer.Screen
           name="Trips"
