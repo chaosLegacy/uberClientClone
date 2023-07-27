@@ -1,5 +1,5 @@
 import React from 'react';
-import WaitingDriverTemplate from '~/components/templates/WaitingDriverScreen';
+import WaitingDriverTemplate from '~/components/templates/WaitingDriverTemplate';
 
 const WaitingDriverScreen = () => {
   return <WaitingDriverTemplate />;

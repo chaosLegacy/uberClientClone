@@ -1,10 +1,17 @@
-import { GraphQLResult } from '@aws-amplify/api';
+import { GraphQLResult, GraphQLSubscription } from '@aws-amplify/api';
 import { API, graphqlOperation } from 'aws-amplify';
-import { Order, UpdateOrderInput, CreateOrderInput } from '~/API';
+import {
+  Order,
+  UpdateOrderInput,
+  CreateOrderInput,
+  OnOrderUpdatedSubscription,
+} from '~/API';
 import { listOrders, getOrder } from '~/graphql/queries';
-import { updateOrder } from '~/graphql/mutations';
+import { updateOrder, createOrder } from '~/graphql/mutations';
 import { ORDER_STATUS } from '~/constants';
-import { createOrder } from '~/graphql/mutations';
+import { onOrderUpdated } from '~/graphql/subscriptions';
+import { OrderSubscriptionType } from '~/types';
+import { ZenObservable } from 'zen-observable-ts/lib/types';
 
 const _createOrder = async (
   order: CreateOrderInput,
@@ -58,4 +65,31 @@ const _updateOrder = async (currentOrder: UpdateOrderInput): Promise<void> => {
   }
 };
 
-export { _createOrder, _getOrdersList, _getOrderById, _updateOrder };
+type OnOrderUpdateProps = {
+  orderId: string;
+  next?(value: OrderSubscriptionType): void;
+  error?(errorValue: any): void;
+};
+const _onOrderUpdatedById = ({
+  orderId,
+  next,
+  error,
+}: OnOrderUpdateProps): ZenObservable.Subscription => {
+  const sub = API.graphql<GraphQLSubscription<OnOrderUpdatedSubscription>>(
+    graphqlOperation(onOrderUpdated, { id: orderId }),
+  ).subscribe({
+    next,
+    error,
+  });
+  // Stop receiving data updates from the subscription
+  // return sub.unsubscribe();
+  return sub;
+};
+
+export {
+  _createOrder,
+  _getOrdersList,
+  _getOrderById,
+  _updateOrder,
+  _onOrderUpdatedById,
+};

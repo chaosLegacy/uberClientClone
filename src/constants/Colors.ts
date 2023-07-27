@@ -11,6 +11,7 @@ const Colors = {
   red: '#ce1d1d',
   hotPink: '#ff69b4',
   lightRed: '#e14444',
+  transparent: 'transparent',
 };
 
 export default Colors;

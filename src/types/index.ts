@@ -4,6 +4,9 @@ import { CognitoUser } from 'amazon-cognito-identity-js';
 import type { PropsWithChildren } from 'react';
 import { GooglePlaceDetail } from 'react-native-google-places-autocomplete';
 import { LatLng } from 'react-native-maps';
+import { GraphQLResult, GraphQLSubscription } from '@aws-amplify/api';
+import { AWSAppSyncRealTimeProvider } from '@aws-amplify/pubsub';
+import { OnOrderUpdatedSubscription, Car as CarAPI } from '~/API';
 
 type SectionProps = PropsWithChildren<{
   title: string;
@@ -56,7 +59,7 @@ type RootStackParamList = {
   Destination: { sort: 'latest' | 'top' } | undefined;
   Order: { startPoint: GooglePlaceDetail; endPoint: GooglePlaceDetail };
   WaitingDriver: { orderId: string };
-  OrderDetail: { orderId: string; carId: string };
+  OrderDetail: { orderId: string; car: CarAPI };
   Trips: undefined;
   Help: undefined;
   Wallet: undefined;
@@ -78,6 +81,12 @@ type OrderDetailScreenNavigationProp = StackNavigationProp<
 type OrderScreenRouteType = RouteProp<RootStackParamList, 'Order'>;
 type WaitingDriverScreenType = RouteProp<RootStackParamList, 'WaitingDriver'>;
 type OrderDetailScreenType = RouteProp<RootStackParamList, 'OrderDetail'>;
+
+type OrderSubscriptionType = {
+  provider?: AWSAppSyncRealTimeProvider | undefined;
+  value: GraphQLResult<GraphQLSubscription<OnOrderUpdatedSubscription>>;
+};
+
 export type {
   SectionProps,
   CarType,
@@ -92,4 +101,5 @@ export type {
   OrderScreenRouteType,
   OrderDetailScreenType,
   WaitingDriverScreenType,
+  OrderSubscriptionType,
 };
