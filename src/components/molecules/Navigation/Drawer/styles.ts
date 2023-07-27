@@ -12,7 +12,7 @@ const styles = StyleSheet.create({
     fontWeight: '400',
     lineHeight: 13.5,
     color: Colors.white,
-    paddingVertical: 5,
+    paddingVertical: 10,
   },
   disabled: {
     color: Colors.lightGray,

@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import { Pressable, Text, View, Image } from 'react-native';
 import Entypo from 'react-native-vector-icons/Entypo';
 import { Auth } from 'aws-amplify';
@@ -10,8 +10,19 @@ import {
 } from '@react-navigation/drawer';
 import styles from './styles';
 import Colors from '~/constants/Colors';
+import { _getUser } from '~/services/user';
+import { User } from '~/API';
 
 const CustomDrawer = (props: DrawerContentComponentProps) => {
+  const [authUser, setAuthUser] = useState<User>();
+  const getCurrentUser = async () => {
+    const authenticatedUser = await _getUser({ currentUser: true });
+    setAuthUser(authenticatedUser);
+  };
+  useEffect(() => {
+    getCurrentUser();
+  }, []);
+
   const makeMoney = () => {
     console.warn('Make money driving...');
   };
@@ -29,19 +40,28 @@ const CustomDrawer = (props: DrawerContentComponentProps) => {
     <DrawerContentScrollView>
       <View style={styles.container}>
         {/* User Row */}
-        <View style={styles.profileContainer}>
-          <Image
-            style={styles.profilePicture}
-            source={require('assets/images/default.jpeg')}
-          />
-          <View style={styles.profileInfo}>
-            <Text style={styles.profileName}>Youssef Barnoukh</Text>
-            <View style={styles.profileRating}>
-              <Text style={styles.rating}>5.00</Text>
-              <Entypo name="star" size={12} color={Colors.white} />
+        {authUser && (
+          <View style={styles.profileContainer}>
+            {authUser.avatar ? (
+              <Image
+                source={{ uri: authUser.avatar }}
+                style={styles.profilePicture}
+              />
+            ) : (
+              <Image
+                source={require('assets/images/default.jpeg')}
+                style={styles.profilePicture}
+              />
+            )}
+            <View style={styles.profileInfo}>
+              <Text style={styles.profileName}>{authUser.name}</Text>
+              <View style={styles.profileRating}>
+                <Text style={styles.rating}>{authUser.rating}</Text>
+                <Entypo name="star" size={12} color={Colors.white} />
+              </View>
             </View>
           </View>
-        </View>
+        )}
         {/* Messages Row */}
         <View style={styles.separator}>
           <Pressable onPress={readMessages}>

@@ -6,6 +6,9 @@ export default StyleSheet.create({
     flex: 1,
     backgroundColor: Colors.white,
   },
+  flexGrow: {
+    flexGrow: 1,
+  },
   relative: {
     position: 'relative',
   },

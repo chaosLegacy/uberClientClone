@@ -8,7 +8,7 @@ type MapMarkerProps = {
   coordinate: LatLng;
   title?: string;
   car?: {
-    heading: number;
+    heading?: number | null;
     type: string;
   };
 };

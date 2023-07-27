@@ -7,6 +7,9 @@ export const getUser = /* GraphQL */ `
     getUser(id: $id) {
       id
       username
+      name
+      rating
+      avatar
       email
       orders {
         items {
@@ -19,11 +22,6 @@ export const getUser = /* GraphQL */ `
           originLong
           destLat
           destLong
-          distance
-          duration
-          accept
-          pickedUp
-          reached
           createdAt
           updatedAt
           __typename
@@ -46,6 +44,9 @@ export const getUser = /* GraphQL */ `
         user {
           id
           username
+          name
+          rating
+          avatar
           email
           createdAt
           updatedAt
@@ -71,6 +72,9 @@ export const listUsers = /* GraphQL */ `
       items {
         id
         username
+        name
+        rating
+        avatar
         email
         orders {
           nextToken
@@ -118,11 +122,6 @@ export const getCar = /* GraphQL */ `
           originLong
           destLat
           destLong
-          distance
-          duration
-          accept
-          pickedUp
-          reached
           createdAt
           updatedAt
           __typename
@@ -133,6 +132,9 @@ export const getCar = /* GraphQL */ `
       user {
         id
         username
+        name
+        rating
+        avatar
         email
         orders {
           nextToken
@@ -182,6 +184,9 @@ export const listCars = /* GraphQL */ `
         user {
           id
           username
+          name
+          rating
+          avatar
           email
           createdAt
           updatedAt
@@ -204,6 +209,9 @@ export const getOrder = /* GraphQL */ `
       user {
         id
         username
+        name
+        rating
+        avatar
         email
         orders {
           nextToken
@@ -241,6 +249,9 @@ export const getOrder = /* GraphQL */ `
         user {
           id
           username
+          name
+          rating
+          avatar
           email
           createdAt
           updatedAt
@@ -256,11 +267,6 @@ export const getOrder = /* GraphQL */ `
       originLong
       destLat
       destLong
-      distance
-      duration
-      accept
-      pickedUp
-      reached
       createdAt
       updatedAt
       __typename
@@ -280,6 +286,9 @@ export const listOrders = /* GraphQL */ `
         user {
           id
           username
+          name
+          rating
+          avatar
           email
           createdAt
           updatedAt
@@ -304,11 +313,6 @@ export const listOrders = /* GraphQL */ `
         originLong
         destLat
         destLong
-        distance
-        duration
-        accept
-        pickedUp
-        reached
         createdAt
         updatedAt
         __typename
@@ -339,6 +343,9 @@ export const ordersByUserId = /* GraphQL */ `
         user {
           id
           username
+          name
+          rating
+          avatar
           email
           createdAt
           updatedAt
@@ -363,11 +370,6 @@ export const ordersByUserId = /* GraphQL */ `
         originLong
         destLat
         destLong
-        distance
-        duration
-        accept
-        pickedUp
-        reached
         createdAt
         updatedAt
         __typename
@@ -400,6 +402,9 @@ export const ordersByCarIdAndCreatedAt = /* GraphQL */ `
         user {
           id
           username
+          name
+          rating
+          avatar
           email
           createdAt
           updatedAt
@@ -424,11 +429,6 @@ export const ordersByCarIdAndCreatedAt = /* GraphQL */ `
         originLong
         destLat
         destLong
-        distance
-        duration
-        accept
-        pickedUp
-        reached
         createdAt
         updatedAt
         __typename
