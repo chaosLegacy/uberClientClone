@@ -22,9 +22,7 @@ import Entypo from 'react-native-vector-icons/Entypo';
 const WaitingDriverTemplate = () => {
   const [driverCar, setDriverCar] = useState<Car>();
   const [position, setPosition] = useState(1);
-  const [status, setStatus] = useState<
-    Array<{ animation: string; label: string }>
-  >([
+  const status: Array<{ animation: string; label: string }> = [
     {
       animation: '',
       label: '.',
@@ -35,9 +33,9 @@ const WaitingDriverTemplate = () => {
     },
     {
       animation: require('assets/animations/waitingDriver1.json'),
-      label: '{driverName} has accepted your order',
+      label: 'A driver has accepted your order',
     },
-  ]);
+  ];
 
   const navigation = useNavigation<OrderDetailScreenNavigationProp>();
   const { params } = useRoute<WaitingDriverScreenType>();
@@ -51,7 +49,6 @@ const WaitingDriverTemplate = () => {
   };
 
   const onOrderUpdateReceived = async (subscription: OrderSubscriptionType) => {
-    console.log('onOrderUpdateReceived: ', subscription);
     if (subscription.value.data && subscription.value.data.onOrderUpdated) {
       const { carId } = subscription.value.data.onOrderUpdated;
       console.log('Order accepted by driver id: ', carId);
@@ -62,16 +59,7 @@ const WaitingDriverTemplate = () => {
   };
 
   const onOrderUpdateError = (errorValue: any) => {
-    console.log('onOrderUpdateError: ', errorValue);
-  };
-
-  const setStatusDriverName = (driverName: string) => {
-    let newArr = [...status];
-    newArr[position].label = status[position].label.replace(
-      '{driverName}',
-      driverName,
-    );
-    setStatus(newArr);
+    console.error('onOrderUpdateError: ', errorValue);
   };
 
   useEffect(() => {
@@ -86,11 +74,8 @@ const WaitingDriverTemplate = () => {
 
   useEffect(() => {
     if (driverCar) {
-      if (driverCar.user) {
-        setStatusDriverName(driverCar.user.name as string);
-      }
       const timeoutId = setTimeout(() => {
-        navigation.navigate('OrderDetail', { orderId, car: driverCar });
+        navigation.navigate('OrderDetail', { orderId, carId: driverCar.id });
       }, 6000);
       return () => {
         clearTimeout(timeoutId);

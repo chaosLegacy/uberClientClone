@@ -1,10 +1,6 @@
-import { StyleSheet, Dimensions } from 'react-native';
+import { StyleSheet } from 'react-native';
 
 const styles = StyleSheet.create({
-  mapContainer: {
-    flex: 1,
-    height: Dimensions.get('window').height - 400,
-  },
   mapView: {
     width: '100%',
     height: '100%',

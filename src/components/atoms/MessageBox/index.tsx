@@ -7,8 +7,7 @@ const index = () => {
     <View style={styles.container}>
       <Text style={styles.title}>Travel only if necessary</Text>
       <Text style={styles.description}>
-        Lorem ipsum dolor sit amet consectetur adipisicing elit. Enim, dicta,
-        ipsum qui eum accusantium ipsa quidem nostrum officia facilis.
+        Lorem ipsum dolor sit amet consectetur adipisicing elit. Enim, dicta.
       </Text>
       <Text style={styles.learnMore}>Learn more</Text>
     </View>

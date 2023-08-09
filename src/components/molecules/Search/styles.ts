@@ -3,9 +3,9 @@ import Colors from '~/constants/Colors';
 
 const styles = StyleSheet.create({
   inputBox: {
-    backgroundColor: Colors.gray,
-    margin: 10,
-    padding: 10,
+    backgroundColor: Colors.lightGray,
+    paddingHorizontal: 15,
+    paddingVertical: 10,
     flexDirection: 'row',
     justifyContent: 'space-between',
     alignItems: 'center',
@@ -25,10 +25,10 @@ const styles = StyleSheet.create({
   },
   row: {
     flexDirection: 'row',
-    padding: 20,
+    padding: 15,
     alignItems: 'center',
     borderBottomWidth: 1,
-    borderColor: Colors.gray,
+    borderColor: Colors.lightGray,
   },
   iconContainer: {
     backgroundColor: Colors.darkGray,

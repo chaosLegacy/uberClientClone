@@ -1,10 +1,9 @@
 import { StyleSheet } from 'react-native';
+import { height } from '~/utils';
 
 const styles = StyleSheet.create({
-  marker: {
-    width: 60,
-    height: 60,
-    resizeMode: 'contain',
+  mapContainer: {
+    height: height - 292,
   },
 });
 

@@ -23,8 +23,8 @@ const calculateDelta = (origin: LatLng, destination: LatLng) => {
   const latitudeDelta = Math.abs(origin.latitude - destination.latitude);
   const longitudeDelta = Math.abs(origin.longitude - destination.longitude);
   return {
-    latitudeDelta: Math.max(0.018, latitudeDelta), // A minimum value to avoid an extremely zoomed-in map
-    longitudeDelta: Math.max(0.018, longitudeDelta), // A minimum value to avoid an extremely zoomed-in map
+    latitudeDelta: Math.max(0.023, latitudeDelta), // A minimum value to avoid an extremely zoomed-in map
+    longitudeDelta: Math.max(0.023, longitudeDelta), // A minimum value to avoid an extremely zoomed-in map
   };
 };
 

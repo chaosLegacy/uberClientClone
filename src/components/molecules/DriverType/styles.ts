@@ -3,14 +3,14 @@ import Colors from '~/constants/Colors';
 
 const styles = StyleSheet.create({
   container: {
-    flex: 1,
+    // flex: 1,
     flexDirection: 'row',
     justifyContent: 'space-between',
     alignItems: 'center',
-    padding: 20,
+    padding: 15,
   },
   image: {
-    height: 70,
+    height: 45,
     width: 80,
     resizeMode: 'contain',
   },

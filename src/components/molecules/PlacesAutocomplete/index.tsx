@@ -17,11 +17,11 @@ type PlacesAutocompleteProps = {
 
 const homePlace = {
   description: 'Home',
-  geometry: { location: { lat: 48.8152937, lng: 2.4597668 } },
+  geometry: { location: { lat: 47.2056872, lng: -1.5308386 } },
 };
 const workPlace = {
   description: 'Work',
-  geometry: { location: { lat: 48.8496818, lng: 2.2940881 } },
+  geometry: { location: { lat: 47.210762, lng: -1.5720947 } },
 };
 
 const PlacesAutocomplete = ({

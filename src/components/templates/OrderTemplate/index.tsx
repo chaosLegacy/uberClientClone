@@ -14,6 +14,8 @@ import { ORDER_STATUS } from '~/constants';
 import { _createOrder } from '~/services/order';
 import { _getAuthenticatedUser } from '~/services/user';
 import { calculateDelta } from '~/utils';
+import styles from './styles';
+import { View } from 'react-native';
 
 const OrderTemplate = () => {
   const { params } = useRoute<OrderScreenRouteType>();
@@ -71,11 +73,13 @@ const OrderTemplate = () => {
 
   return (
     <Container>
-      <Map coordinate={region}>
-        <MapDirections origin={origin} destination={destination} />
-        <MapMarker coordinate={origin} title="Origin" />
-        <MapMarker coordinate={destination} title="Destination" />
-      </Map>
+      <View style={styles.mapContainer}>
+        <Map coordinate={region}>
+          <MapDirections origin={origin} destination={destination} />
+          <MapMarker coordinate={origin} title="Origin" />
+          <MapMarker coordinate={destination} title="Destination" />
+        </Map>
+      </View>
       <DriversList onSubmitCarType={onConfirm} />
     </Container>
   );

@@ -6,6 +6,8 @@ import { Car } from '~/API';
 import MapMarker from '~/components/molecules/MapMarker';
 import Container from '~/components/atoms/Container';
 import { _getCarsList } from '~/services/car';
+import { View } from 'react-native';
+import styles from './styles';
 
 const HomeTemplate = () => {
   const [carsList, setCarsList] = useState<Car[]>([]);
@@ -18,18 +20,20 @@ const HomeTemplate = () => {
   }, []);
   return (
     <Container>
-      <Map>
-        {carsList.map((car: Car) => (
-          <MapMarker
-            key={car.id}
-            coordinate={{
-              latitude: car.latitude as number,
-              longitude: car.longitude as number,
-            }}
-            car={car}
-          />
-        ))}
-      </Map>
+      <View style={styles.mapContainer}>
+        <Map>
+          {carsList.map((car: Car) => (
+            <MapMarker
+              key={car.id}
+              coordinate={{
+                latitude: car.latitude as number,
+                longitude: car.longitude as number,
+              }}
+              car={car}
+            />
+          ))}
+        </Map>
+      </View>
       <MessageBox />
       <Search />
     </Container>

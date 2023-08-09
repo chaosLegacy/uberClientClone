@@ -7,7 +7,6 @@ import MapView, {
 } from 'react-native-maps';
 
 import styles from './styles';
-import { View } from 'react-native';
 import Geolocation from '@react-native-community/geolocation';
 
 type IMapProps = {
@@ -27,8 +26,8 @@ const Map = forwardRef<MapView, IMapProps>((props, ref) => {
   const [region, setRegion] = useState({
     latitude: 0.0,
     longitude: 0.0,
-    latitudeDelta: 0.0122,
-    longitudeDelta: 0.0122,
+    latitudeDelta: 0.011,
+    longitudeDelta: 0.011,
   });
   useEffect(() => {
     if (coordinate) {
@@ -45,20 +44,18 @@ const Map = forwardRef<MapView, IMapProps>((props, ref) => {
   }, [coordinate]);
 
   return (
-    <View style={styles.mapContainer}>
-      <MapView
-        ref={ref}
-        style={styles.mapView}
-        provider={PROVIDER_GOOGLE}
-        showsUserLocation={true}
-        followsUserLocation
-        showsMyLocationButton={showsMyLocationButton}
-        onUserLocationChange={onLocationChange}
-        initialRegion={region}
-        region={region}>
-        <>{children}</>
-      </MapView>
-    </View>
+    <MapView
+      ref={ref}
+      style={styles.mapView}
+      provider={PROVIDER_GOOGLE}
+      showsUserLocation={true}
+      followsUserLocation
+      showsMyLocationButton={showsMyLocationButton}
+      onUserLocationChange={onLocationChange}
+      initialRegion={region}
+      region={region}>
+      <>{children}</>
+    </MapView>
   );
 });
 

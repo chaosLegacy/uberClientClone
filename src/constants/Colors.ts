@@ -4,7 +4,7 @@ const Colors = {
   turquoise: '#1faadb',
   lightBlue: '#bed9ff',
   blue: '#2b80ff',
-  gray: '#cac8c8',
+  gray: '#808080',
   lightGray: '#efefef',
   darkGray: '#312e2e',
   lightGreen: '#42d742',

@@ -6,7 +6,7 @@ import { GooglePlaceDetail } from 'react-native-google-places-autocomplete';
 import { LatLng } from 'react-native-maps';
 import { GraphQLResult, GraphQLSubscription } from '@aws-amplify/api';
 import { AWSAppSyncRealTimeProvider } from '@aws-amplify/pubsub';
-import { OnOrderUpdatedSubscription, Car as CarAPI } from '~/API';
+import { OnOrderUpdatedSubscription, OnCarUpdatedSubscription } from '~/API';
 
 type SectionProps = PropsWithChildren<{
   title: string;
@@ -59,7 +59,7 @@ type RootStackParamList = {
   Destination: { sort: 'latest' | 'top' } | undefined;
   Order: { startPoint: GooglePlaceDetail; endPoint: GooglePlaceDetail };
   WaitingDriver: { orderId: string };
-  OrderDetail: { orderId: string; car: CarAPI };
+  OrderDetail: { orderId: string; carId: string };
   Trips: undefined;
   Help: undefined;
   Wallet: undefined;
@@ -86,6 +86,10 @@ type OrderSubscriptionType = {
   provider?: AWSAppSyncRealTimeProvider | undefined;
   value: GraphQLResult<GraphQLSubscription<OnOrderUpdatedSubscription>>;
 };
+type CarSubscriptionType = {
+  provider?: AWSAppSyncRealTimeProvider | undefined;
+  value: GraphQLResult<GraphQLSubscription<OnCarUpdatedSubscription>>;
+};
 
 export type {
   SectionProps,
@@ -102,4 +106,5 @@ export type {
   OrderDetailScreenType,
   WaitingDriverScreenType,
   OrderSubscriptionType,
+  CarSubscriptionType,
 };

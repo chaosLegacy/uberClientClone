@@ -1,9 +1,16 @@
 import { API, graphqlOperation } from 'aws-amplify';
-import { GraphQLResult } from '@aws-amplify/api';
+import { GraphQLResult, GraphQLSubscription } from '@aws-amplify/api';
 import { getCar, listCars } from '~/graphql/queries';
-import { Car, CreateCarInput, UpdateCarInput } from '~/API';
+import {
+  Car,
+  CreateCarInput,
+  OnCarUpdatedSubscription,
+  UpdateCarInput,
+} from '~/API';
 import { createCar, updateCar } from '~/graphql/mutations';
-import { CognitoUserExt } from '~/types';
+import { CarSubscriptionType, CognitoUserExt } from '~/types';
+import { ZenObservable } from 'zen-observable-ts/lib/types';
+import { onCarUpdated } from '~/graphql/subscriptions';
 
 const _getCarsList = async (): Promise<Car[] | undefined> => {
   try {
@@ -76,10 +83,32 @@ const _updateDriverCar = async (currentCar: UpdateCarInput): Promise<void> => {
   }
 };
 
+type OnCarUpdateProps = {
+  carId: string;
+  next?(value: CarSubscriptionType): void;
+  error?(errorValue: any): void;
+};
+const _onDriverCarUpdatedById = ({
+  carId,
+  next,
+  error,
+}: OnCarUpdateProps): ZenObservable.Subscription => {
+  const sub = API.graphql<GraphQLSubscription<OnCarUpdatedSubscription>>(
+    graphqlOperation(onCarUpdated, { id: carId }),
+  ).subscribe({
+    next,
+    error,
+  });
+  // Stop receiving data updates from the subscription
+  // return sub.unsubscribe();
+  return sub;
+};
+
 export {
   _getCarsList,
   _getDriverCarById,
   _createDriverCar,
   _getDriverCarByUserId,
   _updateDriverCar,
+  _onDriverCarUpdatedById,
 };
